@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;1,400&display=swap');
+
+:root {
+  --fondo-principal: #FBEAD6;
+  --titulos: #C87D87;
+  --textos: #6B7556;
+  --acentos: #F0C4CB;
+  --botones: #E5BCA9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--fondo-principal);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--textos);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.pantalla-entrada {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--fondo-principal);
+}
+
+.puerta {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.puerta img {
+    position: absolute;
+    top: 0;
+    width: 200%;
+    height: 100%;
+    object-fit: cover;
+    max-width: none;
+}
+
+.puerta-izq {
+    left: 0;
+    transform-origin: left;
+    z-index: 2;
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.puerta-izq img { left: 0; }
+
+.puerta-der {
+    right: 0;
+    transform-origin: right;
+    z-index: 1;
+}
+
+.puerta-der img { left: -100%; }
+
+.contenedor-sello {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transform-origin: bottom right;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.7s ease-in;
+}
+
+.sello {
+    width: 80vw;
+    max-width: 350px;
+    margin-bottom: -15%;
+    filter: drop-shadow(0px 8px 12px rgba(107, 117, 86, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.contenedor-sello:hover .sello,
+.contenedor-sello:active .sello {
+    transform: scale(1.05);
+}
+
+.texto-instruccion {
+    margin-top: 10px;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--textos);
+    font-weight: 600;
+    animation: latido 2s infinite;
+}
+
+@keyframes latido {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.puerta-izq.abierta { transform: translateX(-100%); }
+.puerta-der.abierta { transform: translateX(100%); }
+
+.contenedor-sello.oculto {
+    opacity: 0;
+    transform: perspective(600px) rotateX(55deg) rotateY(-35deg) scale(1.4) translateY(-40px);
+    pointer-events: none;
+}
+
+.contenido-invitacion {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+}
+
+.seccion-img {
+    position: relative;
+    width: 100%;
+    line-height: 0; 
+}
+
+.img-base {
+    width: 100%;
+    display: block;
+}
+
+.contenedor-reproductor {
+    position: absolute;
+    top: 66%; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.controles-musica {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.controles-musica button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--titulos); 
+}
+
+.btn-interactivo {
+    position: absolute;
+    background-color: var(--titulos);
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    border-radius: 20px;
+    text-align: center;
+    line-height: normal;
+    z-index: 5;
+}
+
+.btn-recepcion { top: 12%; left: 12%; padding: 6px 12px; font-size: 0.7rem; }
+.btn-ceremonia { top: 6%; right: 12%; padding: 6px 12px; font-size: 0.7rem; }
+
+.contador-regresivo {
+    position: absolute;
+    top: 14%; 
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    z-index: 5;
+}
+
+.tiempo-unidad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white; 
+}
+
+.tiempo-unidad span {
+    font-size: 1.2rem; 
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+}
+
+.tiempo-unidad p {
+    font-size: 0.7rem;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    line-height: 1;
+}
+
+.contenedor-confirmacion {
+    position: absolute;
+    bottom: 8%; 
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 5;
+}
+
+.btn-confirmar-asistencia {
+    background-color: var(--titulos);
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    padding: 15px 35px; 
+    border-radius: 30px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(200, 125, 135, 0.4);
+}
+
+@media (min-width: 768px) {
+    body {
+        display: flex;
+        justify-content: center;
+        background-color: #eaddcd;
+    }
+
+    .pantalla-entrada,
+    .contenido-invitacion {
+        max-width: 450px;
+        margin: 0 auto;
+        position: relative;
+        box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+        background-color: var(--fondo-principal);
+    }
+    
+    .pantalla-entrada {
+        position: absolute;
+    }
+}

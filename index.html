@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años | Victoria Cavazos</title>
+    
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <audio id="audio-sello" src="sonido.mp3"></audio>
+
+    <div id="pantalla-entrada" class="pantalla-entrada">
+        <div class="puerta puerta-izq">
+            <img src="img/entrada/izquierda.png" alt="Parte izquierda del sobre">
+        </div>
+        
+        <div class="puerta puerta-der">
+            <img src="img/entrada/derecha.png" alt="Parte derecha del sobre">
+        </div>
+
+        <div class="contenedor-sello">
+            <img src="img/entrada/sello.png" id="boton-sello" class="sello" alt="Sello Victoria Cavazos">
+        </div>
+    </div>
+
+    <main id="contenido-invitacion" class="contenido-invitacion">
+        
+        <div class="seccion-img">
+            <img src="1.png" class="img-base" alt="Portada">
+            
+            <div class="contenedor-reproductor">
+                <audio id="audio-fondo" src="musica.mp3"></audio>
+                <div class="controles-musica">
+                    <button id="btn-prev">⏮</button>
+                    <button id="btn-play-pause">
+                        <span id="icono-play">▶</span>
+                        <span id="icono-pause" style="display: none;">⏸</span>
+                    </button>
+                    <button id="btn-next">⏭</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion-img">
+            <img src="2.png" class="img-base" alt="Calendario">
+            
+            <div id="contador" class="contador-regresivo">
+                <div class="tiempo-unidad">
+                    <span id="dias">00</span>
+                    <p>DÍAS</p>
+                </div>
+                <div class="tiempo-unidad">
+                    <span id="horas">00</span>
+                    <p>HORAS</p>
+                </div>
+                <div class="tiempo-unidad">
+                    <span id="minutos">00</span>
+                    <p>MIN</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion-img">
+            <img src="3.png" class="img-base" alt="Itinerario">
+            
+            <a href="https://share.google/vJ6SeiwJxwN037XED" target="_blank" class="btn-interactivo btn-recepcion">UBICACIÓN</a>
+            <a href="https://share.google/mqEfKW2lDVj7Fcx4Q" target="_blank" class="btn-interactivo btn-ceremonia">UBICACIÓN</a>
+
+            <div class="contenedor-confirmacion">
+                <a href="https://wa.me/528979713312?text=Hola,%20muchas%20gracias%20por%20la%20invitaci%C3%B3n%20a%20los%20XV%20de%20Victoria.%20%C2%A1Cuenta%20con%20mi%20presencia!" target="_blank" class="btn-confirmar-asistencia">
+                    CONFIRMAR ASISTENCIA
+                </a>
+            </div>
+        </div>
+        
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
