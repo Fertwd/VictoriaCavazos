@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     const botonSello = document.getElementById('boton-sello');
     const contenedorSello = document.querySelector('.contenedor-sello');
     const puertaIzq = document.querySelector('.puerta-izq');
@@ -10,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (botonSello) {
         botonSello.addEventListener('click', () => {
             if (audioSello) {
-                audioSello.play().catch(error => console.log("Error al reproducir audio del sello:", error));
+                audioSello.play().catch(error => console.log(error));
             }
 
             contenedorSello.classList.add('oculto');
@@ -33,7 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
 
+    const playlist = [
+        'musica/cancion1.mp3',
+        'musica/cancion2.mp3',
+        'musica/cancion3.mp3',
+        'musica/cancion4.mp3',
+        'musica/cancion5.mp3'
+    ];
+    
+    let indiceCancionActual = 0;
     let reproduciendo = false;
+
+    function cargarCancion(indice) {
+        audioFondo.src = playlist[indice];
+        if (reproduciendo) {
+            audioFondo.play();
+        }
+    }
 
     if (btnPlayPause && audioFondo) {
         btnPlayPause.addEventListener('click', () => {
@@ -50,11 +65,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         btnPrev.addEventListener('click', () => {
-            audioFondo.currentTime = 0;
+            indiceCancionActual--;
+            if (indiceCancionActual < 0) {
+                indiceCancionActual = playlist.length - 1; 
+            }
+            cargarCancion(indiceCancionActual);
         });
 
         btnNext.addEventListener('click', () => {
-            audioFondo.currentTime += 10;
+            indiceCancionActual++;
+            if (indiceCancionActual >= playlist.length) {
+                indiceCancionActual = 0; 
+            }
+            cargarCancion(indiceCancionActual);
+        });
+
+        audioFondo.addEventListener('ended', () => {
+            indiceCancionActual++;
+            if (indiceCancionActual >= playlist.length) {
+                indiceCancionActual = 0;
+            }
+            cargarCancion(indiceCancionActual);
+            audioFondo.play();
         });
     }
 

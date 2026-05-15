@@ -2,52 +2,53 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mis XV Años | Victoria Cavazos</title>
-    
     <link rel="icon" type="image/png" href="img/favicon.png">
-    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <audio id="audio-sello" src="sonido.mp3"></audio>
-
     <div id="pantalla-entrada" class="pantalla-entrada">
         <div class="puerta puerta-izq">
             <img src="img/entrada/izquierda.png" alt="Parte izquierda del sobre">
         </div>
-        
         <div class="puerta puerta-der">
             <img src="img/entrada/derecha.png" alt="Parte derecha del sobre">
         </div>
-
         <div class="contenedor-sello">
             <img src="img/entrada/sello.png" id="boton-sello" class="sello" alt="Sello Victoria Cavazos">
         </div>
     </div>
-
     <main id="contenido-invitacion" class="contenido-invitacion">
-        
         <div class="seccion-img">
             <img src="1.png" class="img-base" alt="Portada">
-            
             <div class="contenedor-reproductor">
-                <audio id="audio-fondo" src="musica.mp3"></audio>
+                <audio id="audio-fondo" src="musica/cancion1.mp3"></audio>
                 <div class="controles-musica">
-                    <button id="btn-prev">⏮</button>
-                    <button id="btn-play-pause">
-                        <span id="icono-play">▶</span>
-                        <span id="icono-pause" style="display: none;">⏸</span>
+                    <button id="btn-prev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                        </svg>
                     </button>
-                    <button id="btn-next">⏭</button>
+                    <button id="btn-play-pause" class="btn-principal" aria-label="Reproducir/Pausar">
+                        <svg id="icono-play" viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg id="icono-pause" viewBox="0 0 24 24" width="36" height="36" fill="currentColor" style="display: none;">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                        </svg>
+                    </button>
+                    <button id="btn-next" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
-
         <div class="seccion-img">
             <img src="2.png" class="img-base" alt="Calendario">
-            
             <div id="contador" class="contador-regresivo">
                 <div class="tiempo-unidad">
                     <span id="dias">00</span>
@@ -63,22 +64,17 @@
                 </div>
             </div>
         </div>
-
         <div class="seccion-img">
             <img src="3.png" class="img-base" alt="Itinerario">
-            
-            <a href="https://share.google/vJ6SeiwJxwN037XED" target="_blank" class="btn-interactivo btn-recepcion">UBICACIÓN</a>
-            <a href="https://share.google/mqEfKW2lDVj7Fcx4Q" target="_blank" class="btn-interactivo btn-ceremonia">UBICACIÓN</a>
-
+            <a href="https://maps.app.goo.gl/XCj39n9eLqtPRR71A" target="_blank" class="btn-interactivo btn-recepcion">UBICACIÓN</a>
+            <a href="https://maps.app.goo.gl/3d5K2vvtH8ch2P9K7" target="_blank" class="btn-interactivo btn-ceremonia">UBICACIÓN</a>
             <div class="contenedor-confirmacion">
                 <a href="https://wa.me/528979713312?text=Hola,%20muchas%20gracias%20por%20la%20invitaci%C3%B3n%20a%20los%20XV%20de%20Victoria.%20%C2%A1Cuenta%20con%20mi%20presencia!" target="_blank" class="btn-confirmar-asistencia">
                     CONFIRMAR ASISTENCIA
                 </a>
             </div>
         </div>
-        
     </main>
-
     <script src="main.js"></script>
 </body>
 </html>

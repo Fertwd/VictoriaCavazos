@@ -14,11 +14,14 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
     background-color: var(--fondo-principal);
     font-family: 'Montserrat', sans-serif;
     color: var(--textos);
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -78,8 +81,6 @@ body {
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    transform-origin: bottom right;
-    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.7s ease-in;
 }
 
 .sello {
@@ -88,76 +89,90 @@ body {
     margin-bottom: -15%;
     filter: drop-shadow(0px 8px 12px rgba(107, 117, 86, 0.3));
     transition: transform 0.3s ease;
+    transform-origin: bottom right;
 }
 
-.contenedor-sello:hover .sello,
-.contenedor-sello:active .sello {
-    transform: scale(1.05);
+.contenedor-sello.oculto .sello {
+    opacity: 0;
+    transform: perspective(600px) rotateX(55deg) rotateY(-35deg) scale(1.4) translateY(-40px);
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.7s ease-in;
 }
 
-.texto-instruccion {
-    margin-top: 10px;
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--textos);
-    font-weight: 600;
-    animation: latido 2s infinite;
-}
-
-@keyframes latido {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
+.contenedor-sello.oculto {
+    pointer-events: none;
 }
 
 .puerta-izq.abierta { transform: translateX(-100%); }
 .puerta-der.abierta { transform: translateX(100%); }
 
-.contenedor-sello.oculto {
-    opacity: 0;
-    transform: perspective(600px) rotateX(55deg) rotateY(-35deg) scale(1.4) translateY(-40px);
-    pointer-events: none;
-}
-
 .contenido-invitacion {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%; 
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .seccion-img {
     position: relative;
     width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
     line-height: 0; 
 }
 
 .img-base {
     width: 100%;
+    margin: 0;
+    padding: 0;
     display: block;
+    object-fit: cover;
 }
 
 .contenedor-reproductor {
     position: absolute;
-    top: 66%; 
-    left: 50%;
+    top: 64.5%; 
+    left: 51%;
     transform: translateX(-50%);
     z-index: 5;
 }
 
 .controles-musica {
     display: flex;
-    gap: 30px;
+    gap: 15px; 
     align-items: center;
 }
 
 .controles-musica button {
-    background: none;
+    background: transparent; 
     border: none;
     cursor: pointer;
-    font-size: 1.5rem;
     color: var(--titulos); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px; 
+    height: 25px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.controles-musica .btn-principal {
+    width: 35px;
+    height: 35px;
+}
+
+.controles-musica button:hover,
+.controles-musica button:active {
+    transform: scale(1.1);
+    opacity: 0.7; 
+}
+
+.controles-musica svg {
+    width: 100%;
+    height: 100%;
+    transition: fill 0.2s ease;
 }
 
 .btn-interactivo {
@@ -173,12 +188,12 @@ body {
     z-index: 5;
 }
 
-.btn-recepcion { top: 12%; left: 12%; padding: 6px 12px; font-size: 0.7rem; }
-.btn-ceremonia { top: 6%; right: 12%; padding: 6px 12px; font-size: 0.7rem; }
+.btn-recepcion { top: 12%; left: 12%; padding: 4px 10px; font-size: 0.6rem; }
+.btn-ceremonia { top: 6%; right: 12%; padding: 4px 10px; font-size: 0.6rem; }
 
 .contador-regresivo {
     position: absolute;
-    top: 14%; 
+    top: 13.89%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -196,13 +211,13 @@ body {
 }
 
 .tiempo-unidad span {
-    font-size: 1.2rem; 
+    font-size: 1.5rem; 
     font-family: 'Playfair Display', serif;
     line-height: 1;
 }
 
 .tiempo-unidad p {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 2px;
     margin-top: 5px;
@@ -211,7 +226,7 @@ body {
 
 .contenedor-confirmacion {
     position: absolute;
-    bottom: 8%; 
+    bottom: 8%;
     left: 0;
     width: 100%;
     display: flex;
@@ -225,7 +240,7 @@ body {
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    padding: 15px 35px; 
+    padding: 15px 35px;
     border-radius: 30px;
     font-size: 1rem;
     letter-spacing: 1px;
